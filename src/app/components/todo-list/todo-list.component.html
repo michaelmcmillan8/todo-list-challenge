@@ -1,0 +1,65 @@
+<div class="d-flex">
+    <h1 class="flex-grow-1">Todo List</h1>
+    <i class="pi pi-question-circle" (click)="showHelpDialog = true;"></i>
+    <i class="pi pi-plus" (click)="showAddDialog = true;"></i>
+</div>
+
+<div class="row">
+    <div class="col-12">
+        <button class="btn btn-primary" id="editButton" (click)="onEditButtonClick()" [disabled]="!selectedId">Edit</button>
+        <button class="btn btn-danger" id="deleteButton" (click)="onDeleteClick()" [disabled]="!selectedId">Delete</button>
+    </div>
+</div>
+
+<div class="card-container" *ngFor="let item of todoItems">
+    <label [attr.for]="item.id">
+        <p-card> 
+            <div class="d-flex">
+                <div class="radio-container">
+                    <p-radioButton name="item" [inputId]="item.id" [value]="item.id" [(ngModel)]="selectedId"></p-radioButton>
+                </div>
+                <div class="flex-grow-1">
+                    {{ item.title }}
+                </div>
+            </div>
+        </p-card>
+    </label>
+</div>
+
+<p-dialog [(visible)]="showHelpDialog" [style]="{ width: '500px' }">
+    <p-header>
+        <h2 class="inline">Help</h2>
+    </p-header>
+    <p>This is a simple todo list app. Clicking on the <i class="pi pi-plus"></i> icon will allow you to add additional tasks to the list.</p>
+    <br />
+    <p>Clicking on any of the todo cards will select it, which will enable the edit and delete buttons.</p>
+    <br />
+    <p>If this is your first time viewing the page then there will be sample todo items to start with. Todo list items will persist on page refresh.</p>
+    <p-footer>
+        <button class="btn btn-secondary" (click)="showHelpDialog = false;">Close</button>
+    </p-footer>
+</p-dialog>
+
+<p-dialog [(visible)]="showAddDialog" [style]="{ width: '500px' }">
+    <p-header>
+      <h2 class="inline">Add a Todo</h2>
+    </p-header>
+          <label for="title">Title</label>
+          <input type="text" id="title" pInputText [(ngModel)]="newItemTitle" />
+    <p-footer>
+      <button class="btn btn-secondary" (click)="showAddDialog = false;">Cancel</button>
+      <button class="btn btn-primary" id="confirmAddButton" (click)="onAddItemClick()" [disabled]="!newItemTitle">Add</button>
+    </p-footer>
+  </p-dialog>
+
+<p-dialog [(visible)]="showEditDialog" [style]="{ width: '500px' }">
+    <p-header>
+      <h2 class="inline">Edit Todo</h2>
+    </p-header>
+    <label for="title">Title</label>
+    <input type="text" id="title" pInputText [(ngModel)]="editingTitle"/>
+    <p-footer>
+      <button class="btn btn-secondary" (click)="showEditDialog = false;">Cancel</button>
+      <button class="btn btn-primary" id="confirmEditButton" (click)="onEditItemClick()" [disabled]="!editingTitle">Confirm</button>
+    </p-footer>
+</p-dialog>

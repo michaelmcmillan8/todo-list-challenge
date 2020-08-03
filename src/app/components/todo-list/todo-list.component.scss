@@ -1,0 +1,27 @@
+.d-flex{
+    display: flex;
+    align-items: center;
+    .flex-grow-1{
+        flex-grow: 1;
+    }
+}
+
+.radio-container{
+    margin-right: 1em;
+}
+
+.card-container{
+    margin-bottom: 1em;
+    label{
+        cursor: pointer;
+    }
+}
+
+.pi{
+    cursor: pointer;
+    padding: 5px;
+}
+
+.row{
+    margin-bottom: 1em;
+}

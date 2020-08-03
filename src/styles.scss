@@ -1,1 +1,54 @@
-/* You can add global styles to this file, and also import other style files */
+$color-border: #ccc;
+
+body{
+    min-height: 97.5vh;
+    background-color: #f6f6f6;
+}
+
+label{
+    display: block;
+    margin-bottom: .25rem;
+}
+
+.container{
+    margin-top: 20px;
+    min-height: 50vh;
+}
+
+.add-icon{
+    cursor: pointer;
+}
+
+.pull-right{
+    float: right;
+}
+
+.inline{
+    display: inline-block;
+}
+
+.ui-dialog{
+    border-radius: 5px;
+    .ui-dialog-titlebar{
+        border-bottom: 1px solid $color-border;
+    }
+    .ui-dialog-content{
+        padding: 1em 0;
+    }
+    .ui-dialog-footer{
+        border-top: 1px solid $color-border;
+    }
+    input{
+        width: 100%;
+    }
+}
+
+.col-12{
+    &:not(:last-child){
+        margin-bottom: 1em;
+    }
+}
+
+div button:not(:last-child){
+    margin-right: 1em;
+}
